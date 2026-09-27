@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">表格布局实验</string>
+
+    <!-- 表格标题（跨两列，居中） -->
+    <string name="table_title">Hello TableLayout</string>
+
+    <!-- 菜单项与其快捷键，分别放在表格的第 1 列与第 2 列 -->
+    <string name="menu_open">Open&#8230;</string>
+    <string name="menu_open_shortcut">Ctrl-O</string>
+    <string name="menu_save">Save&#8230;</string>
+    <string name="menu_save_shortcut">Ctrl-S</string>
+    <string name="menu_save_as">Save As&#8230;</string>
+    <string name="menu_save_as_shortcut">Ctrl-Shift-S</string>
+    <string name="menu_import">Import&#8230;</string>
+    <string name="menu_import_shortcut">Ctrl-I</string>
+    <string name="menu_export">Export&#8230;</string>
+    <string name="menu_export_shortcut">Ctrl-E</string>
+    <string name="menu_quit">Quit</string>
+
+    <!-- 小叉号：对应截图中 Import / Export 两行左侧被截断的字符 -->
+    <string name="cut_mark">X</string>
+</resources>

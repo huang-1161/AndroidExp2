@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 单元格文字颜色：前两行为白色，后两行为灰色（对应文档截图） -->
+    <color name="cell_text_bright">#FFFFFF</color>
+    <color name="cell_text_dim">#828282</color>
+    <!-- 网格单元格的浅色边框（实测参考图约 #7D7D7D） -->
+    <color name="grid_line">#7D7D7D</color>
+    <color name="grid_background">#000000</color>
+</resources>

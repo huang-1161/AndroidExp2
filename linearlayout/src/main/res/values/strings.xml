@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">线性布局实验</string>
+    <string name="title">实验2-1 线性布局（LinearLayout）</string>
+
+    <!-- 网格 16 个单元格文本，与文档截图完全一致 -->
+    <string name="cell_1_1">One,One</string>
+    <string name="cell_1_2">One,Two</string>
+    <string name="cell_1_3">One,Three</string>
+    <string name="cell_1_4">One,Four</string>
+    <string name="cell_2_1">Two,One</string>
+    <string name="cell_2_2">Two,Two</string>
+    <string name="cell_2_3">Two,Three</string>
+    <string name="cell_2_4">Two,Four</string>
+    <string name="cell_3_1">Three,One</string>
+    <string name="cell_3_2">Three,Two</string>
+    <string name="cell_3_3">Three,Three</string>
+    <string name="cell_3_4">Three,Four</string>
+    <string name="cell_4_1">Four,One</string>
+    <string name="cell_4_2">Four,Two</string>
+    <string name="cell_4_3">Four,Three</string>
+    <string name="cell_4_4">Four,Four</string>
+</resources>

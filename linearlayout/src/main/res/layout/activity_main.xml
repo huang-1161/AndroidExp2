@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  实验2-1  线性布局 LinearLayout
+  要求：用线性布局实现 4 行 4 列的表格效果（共 16 个单元格）。
+  实现：最外层垂直 LinearLayout 的 4 个横向 LinearLayout 子项（即 4 行），
+        每个横向 LinearLayout 内放 4 个 TextView（即 4 列）。
+        列宽用 layout_weight 按参考图实测的单元格间距比例 158:250:180:162 分配，
+        行高用 layout_weight="1" 平均撑满剩余高度。
+  对照参考图：
+        · 每个单元格是一个黑底 + 1dp 浅灰边框的方块（@drawable/cell_border，3dp 间距）；
+        · 文字居中，字号 16sp（原来的 20sp 会让第 1、4 列文字换行被裁）；
+        · 前两行文字亮、后两行文字暗（@color/cell_text_bright / cell_text_dim）。
+  fitsSystemWindows：targetSdk 36 默认 edge-to-edge，加它可避免内容被状态栏/导航栏遮挡。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grid_background"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- ============ 第 1 行 ============ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="158"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_1_1"
+            android:textColor="@color/cell_text_bright"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="250"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_1_2"
+            android:textColor="@color/cell_text_bright"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="180"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_1_3"
+            android:textColor="@color/cell_text_bright"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="162"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_1_4"
+            android:textColor="@color/cell_text_bright"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- ============ 第 2 行 ============ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="158"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_2_1"
+            android:textColor="@color/cell_text_bright"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="250"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_2_2"
+            android:textColor="@color/cell_text_bright"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="180"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_2_3"
+            android:textColor="@color/cell_text_bright"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="162"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_2_4"
+            android:textColor="@color/cell_text_bright"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- ============ 第 3 行 ============ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="158"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_3_1"
+            android:textColor="@color/cell_text_dim"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="250"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_3_2"
+            android:textColor="@color/cell_text_dim"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="180"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_3_3"
+            android:textColor="@color/cell_text_dim"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="162"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_3_4"
+            android:textColor="@color/cell_text_dim"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- ============ 第 4 行 ============ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="158"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_4_1"
+            android:textColor="@color/cell_text_dim"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="250"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_4_2"
+            android:textColor="@color/cell_text_dim"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="180"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_4_3"
+            android:textColor="@color/cell_text_dim"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="162"
+            android:background="@drawable/cell_border"
+            android:gravity="center"
+            android:text="@string/cell_4_4"
+            android:textColor="@color/cell_text_dim"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  实验2-2  表格布局 TableLayout
+  要求：用表格布局实现一个菜单界面。
+  对照文档截图：
+    · 第 1 行是标题 "Hello TableLayout"，跨两列居中，底色为浅灰；
+    · 其后每行是一个菜单项：第 1 列是菜单文字（左对齐、缩进），
+      第 2 列是快捷键（右对齐），如 Ctrl-O / Ctrl-S / Ctrl-Shift-S / Ctrl-E；
+    · Import / Export 两行左侧各有一个被截断的字符（截图中呈 "X" 形）；
+    · Quit 行没有快捷键。
+  实现：TableLayout + TableRow。android:stretchColumns="1" 让第 2 列占满
+        剩余宽度，从而把快捷键推到最右侧；标题行用 android:layout_span="2" 跨列。
+-->
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background"
+    android:fitsSystemWindows="true"
+    android:stretchColumns="1">
+
+    <!-- ============ 标题行：跨两列 ============ -->
+    <TableRow android:background="@color/title_background">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:background="@color/title_background"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/table_title"
+            android:textColor="@color/title_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <!-- ============ Open... | Ctrl-O ============ -->
+    <TableRow>
+
+        <TextView
+            android:paddingStart="24dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="12dp"
+            android:text="@string/menu_open"
+            android:textColor="@color/menu_text"
+            android:textSize="16sp" />
+
+        <TextView
+            android:gravity="end"
+            android:paddingStart="8dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/menu_open_shortcut"
+            android:textColor="@color/shortcut_text"
+            android:textSize="16sp" />
+    </TableRow>
+
+    <!-- ============ Save... | Ctrl-S ============ -->
+    <TableRow>
+
+        <TextView
+            android:paddingStart="24dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="12dp"
+            android:text="@string/menu_save"
+            android:textColor="@color/menu_text"
+            android:textSize="16sp" />
+
+        <TextView
+            android:gravity="end"
+            android:paddingStart="8dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/menu_save_shortcut"
+            android:textColor="@color/shortcut_text"
+            android:textSize="16sp" />
+    </TableRow>
+
+    <!-- ============ Save As... | Ctrl-Shift-S ============ -->
+    <TableRow>
+
+        <TextView
+            android:paddingStart="24dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="12dp"
+            android:text="@string/menu_save_as"
+            android:textColor="@color/menu_text"
+            android:textSize="16sp" />
+
+        <TextView
+            android:gravity="end"
+            android:paddingStart="8dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/menu_save_as_shortcut"
+            android:textColor="@color/shortcut_text"
+            android:textSize="16sp" />
+    </TableRow>
+
+    <!-- ============ X Import...（截图中该行没有快捷键） ============ -->
+    <TableRow
+        android:background="@color/table_background">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="4dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="2dp"
+                android:paddingBottom="12dp"
+                android:text="@string/cut_mark"
+                android:textColor="@color/menu_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="0dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="12dp"
+                android:text="@string/menu_import"
+                android:textColor="@color/menu_text"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </TableRow>
+
+    <!-- ============ X Export... | Ctrl-E ============ -->
+    <TableRow
+        android:background="@color/table_background">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="4dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="2dp"
+                android:paddingBottom="12dp"
+                android:text="@string/cut_mark"
+                android:textColor="@color/menu_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="0dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="12dp"
+                android:text="@string/menu_export"
+                android:textColor="@color/menu_text"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView
+            android:gravity="end"
+            android:paddingStart="8dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/menu_export_shortcut"
+            android:textColor="@color/shortcut_text"
+            android:textSize="16sp" />
+    </TableRow>
+
+    <!-- ============ Quit（无快捷键） ============ -->
+    <TableRow>
+
+        <TextView
+            android:paddingStart="24dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="12dp"
+            android:text="@string/menu_quit"
+            android:textColor="@color/menu_text"
+            android:textSize="16sp" />
+    </TableRow>
+</TableLayout>

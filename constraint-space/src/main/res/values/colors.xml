@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="screen_bg">#FFFFFF</color>
+
+    <!-- 出发地 / 目的地方块：文档截图为深绿色（实测约 #2E7D32） -->
+    <color name="station_bg">#2E7D32</color>
+    <color name="station_text">#FFFFFF</color>
+
+    <!-- 行程信息胶囊：文档截图为橙色 -->
+    <color name="trip_bg">#D35400</color>
+    <color name="trip_text">#FFFFFF</color>
+
+    <!-- 底部 DEPART 按钮：同为深绿色 -->
+    <color name="depart_bg">#2E7D32</color>
+    <color name="depart_text">#FFFFFF</color>
+
+    <!-- 顶部标签栏（参考图底色为近白 #FDFDFD） -->
+    <color name="tab_bar_bg">#FDFDFD</color>
+    <color name="tab_text">#616161</color>
+    <color name="divider">#E0E0E0</color>
+</resources>

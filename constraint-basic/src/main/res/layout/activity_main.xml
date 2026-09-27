@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  实验2-3  约束布局 ConstraintLayout（一）：计算器界面
+  对照文档截图：
+    · 顶部深青色标题栏，标题 "ConstraintLayoutTest"；
+    · 灰色小字标签 "Input"；
+    · 一个米黄褐色底的输入显示框，内容 "0.0" 右对齐；
+    · 下方 4 行 x 4 列按键：
+        7 8 9 ÷
+        4 5 6 ×
+        1 2 3 −
+        . 0 = +
+  实现要点（约束布局核心）：
+    · 每个子控件都同时具备水平约束和垂直约束；
+    · 按键列之间用水平链（Chain）、行之间用垂直链定位，
+      外层再通过 layout_constraintVertical_bias 与 margin 对齐到整体比例；
+    · 按键宽高为 0dp，由约束自动拉伸（match_constraint）。
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_bg"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <!-- ==================== 1. 顶部标题栏 ==================== -->
+    <TextView
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar_bg"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="14dp"
+        android:text="@string/toolbar_title"
+        android:textColor="@color/toolbar_text"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- ==================== 2. "Input" 标签 ==================== -->
+    <TextView
+        android:id="@+id/labelInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/input_label"
+        android:textColor="@color/label_text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <!-- ==================== 3. 输入显示框 ==================== -->
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/display_bg"
+        android:gravity="center_vertical|end"
+        android:paddingStart="8dp"
+        android:paddingEnd="12dp"
+        android:text="@string/input_value"
+        android:textColor="@color/display_text"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelInput"
+        tools:text="0.0" />
+
+    <!-- ==================== 4. 按键区（4x4） ====================
+         高度固定 370dp：按键本身 42dp，剩下的空间由垂直链（spread）平摊成行间距，
+         这样按键不会被拉伸铺满整屏，与参考图一致。 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/keypad"
+        android:layout_width="0dp"
+        android:layout_height="370dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/display">
+
+        <!-- ===== 第 1 行 ===== -->
+        <Button
+            android:id="@+id/key7"
+            style="@style/CalcKey"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_7"
+            app:layout_constraintBottom_toTopOf="@id/key4"
+            app:layout_constraintEnd_toStartOf="@id/key8"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/key8"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_8"
+            app:layout_constraintBottom_toTopOf="@id/key5"
+            app:layout_constraintEnd_toStartOf="@id/key9"
+            app:layout_constraintStart_toEndOf="@id/key7"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/key9"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_9"
+            app:layout_constraintBottom_toTopOf="@id/key6"
+            app:layout_constraintEnd_toStartOf="@id/keyDiv"
+            app:layout_constraintStart_toEndOf="@id/key8"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/keyDiv"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:text="@string/key_div"
+            app:layout_constraintBottom_toTopOf="@id/keyMul"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/key9"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- ===== 第 2 行 ===== -->
+        <Button
+            android:id="@+id/key4"
+            style="@style/CalcKey"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_4"
+            app:layout_constraintBottom_toTopOf="@id/key1"
+            app:layout_constraintEnd_toStartOf="@id/key5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/key7" />
+
+        <Button
+            android:id="@+id/key5"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_5"
+            app:layout_constraintBottom_toTopOf="@id/key2"
+            app:layout_constraintEnd_toStartOf="@id/key6"
+            app:layout_constraintStart_toEndOf="@id/key4"
+            app:layout_constraintTop_toBottomOf="@id/key8" />
+
+        <Button
+            android:id="@+id/key6"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_6"
+            app:layout_constraintBottom_toTopOf="@id/key3"
+            app:layout_constraintEnd_toStartOf="@id/keyMul"
+            app:layout_constraintStart_toEndOf="@id/key5"
+            app:layout_constraintTop_toBottomOf="@id/key9" />
+
+        <Button
+            android:id="@+id/keyMul"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/key_mul"
+            app:layout_constraintBottom_toTopOf="@id/keySub"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/key6"
+            app:layout_constraintTop_toBottomOf="@id/keyDiv" />
+
+        <!-- ===== 第 3 行 ===== -->
+        <Button
+            android:id="@+id/key1"
+            style="@style/CalcKey"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_1"
+            app:layout_constraintBottom_toTopOf="@id/keyDot"
+            app:layout_constraintEnd_toStartOf="@id/key2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/key4" />
+
+        <Button
+            android:id="@+id/key2"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_2"
+            app:layout_constraintBottom_toTopOf="@id/key0"
+            app:layout_constraintEnd_toStartOf="@id/key3"
+            app:layout_constraintStart_toEndOf="@id/key1"
+            app:layout_constraintTop_toBottomOf="@id/key5" />
+
+        <Button
+            android:id="@+id/key3"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_3"
+            app:layout_constraintBottom_toTopOf="@id/keyEq"
+            app:layout_constraintEnd_toStartOf="@id/keySub"
+            app:layout_constraintStart_toEndOf="@id/key2"
+            app:layout_constraintTop_toBottomOf="@id/key6" />
+
+        <!-- 第 3 行第 4 列（−）。
+             注意：这里必须约束到下一行的 keyAdd，而不能是 parent 底部 ——
+             否则第 4 列的垂直链不成立，÷ × − + 会错位、− 与 + 重叠。 -->
+        <Button
+            android:id="@+id/keySub"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/key_sub"
+            app:layout_constraintBottom_toTopOf="@id/keyAdd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/key3"
+            app:layout_constraintTop_toBottomOf="@id/keyMul" />
+
+        <!-- ===== 第 4 行 ===== -->
+        <Button
+            android:id="@+id/keyDot"
+            style="@style/CalcKey"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_dot"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/key0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/key1" />
+
+        <Button
+            android:id="@+id/key0"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/keyEq"
+            app:layout_constraintStart_toEndOf="@id/keyDot"
+            app:layout_constraintTop_toBottomOf="@id/key2" />
+
+        <Button
+            android:id="@+id/keyEq"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/key_eq"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/keyAdd"
+            app:layout_constraintStart_toEndOf="@id/key0"
+            app:layout_constraintTop_toBottomOf="@id/key3" />
+
+        <Button
+            android:id="@+id/keyAdd"
+            style="@style/CalcKey"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/key_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/keyEq"
+            app:layout_constraintTop_toBottomOf="@id/keySub" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

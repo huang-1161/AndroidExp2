@@ -1,0 +1,30 @@
+// Helper init script for the :compose module build.
+// The project's settings.gradle.kts is shared/managed elsewhere and currently points at a
+// local HTTP proxy (http://127.0.0.1:18080/) that is not running. This init script makes the
+// build independent of that by pinning the repository list to the local offline repo plus the
+// plain-HTTP Huawei mirror. It only affects builds that pass `-I <this file>`.
+settingsEvaluated { settings ->
+    settings.pluginManagement.repositories.clear()
+    settings.pluginManagement.repositories.maven { r ->
+        r.name = 'LocalOfflineRepo'
+        r.url = 'file:///D:/MOBILE~1/exp2/myproj/local-repo'
+        r.metadataSources { ms -> ms.gradleMetadata(); ms.mavenPom() }
+    }
+    settings.pluginManagement.repositories.maven { r ->
+        r.name = 'HuaweiHttpMirror'
+        r.url = 'http://repo.huaweicloud.com/repository/maven/'
+        r.allowInsecureProtocol = true
+    }
+
+    settings.dependencyResolutionManagement.repositories.clear()
+    settings.dependencyResolutionManagement.repositories.maven { r ->
+        r.name = 'LocalOfflineRepo'
+        r.url = 'file:///D:/MOBILE~1/exp2/myproj/local-repo'
+        r.metadataSources { ms -> ms.gradleMetadata(); ms.mavenPom() }
+    }
+    settings.dependencyResolutionManagement.repositories.maven { r ->
+        r.name = 'HuaweiHttpMirror'
+        r.url = 'http://repo.huaweicloud.com/repository/maven/'
+        r.allowInsecureProtocol = true
+    }
+}

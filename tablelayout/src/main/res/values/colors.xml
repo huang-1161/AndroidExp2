@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 参考图实测：整屏底色 #232323，标题栏浅灰 #999999 -->
+    <color name="screen_background">#232323</color>
+    <color name="table_background">#232323</color>
+    <color name="title_background">#999999</color>
+    <color name="title_text">#FFFFFF</color>
+    <color name="menu_text">#E0E0E0</color>
+    <color name="shortcut_text">#E0E0E0</color>
+</resources>

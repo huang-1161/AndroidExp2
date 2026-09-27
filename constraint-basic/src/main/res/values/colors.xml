@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 顶部标题栏（参考图实测 #00695C，Material Teal 800） -->
+    <color name="toolbar_bg">#00695C</color>
+    <color name="toolbar_text">#FFFFFF</color>
+    <!-- 输入显示区（参考图实测约 #C0BF9E 米黄褐底） -->
+    <color name="display_bg">#C0BF9E</color>
+    <color name="display_text">#5A5A45</color>
+    <color name="label_text">#9E9E9E</color>
+    <!-- 数字/运算符按键（参考图实测 #D3D3D3） -->
+    <color name="key_bg">#D3D3D3</color>
+    <color name="key_text">#212121</color>
+    <color name="screen_bg">#FAFAFA</color>
+</resources>

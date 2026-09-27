@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">约束布局实验2</string>
+
+    <!-- 顶部三个标签页 -->
+    <string name="tab_space_stations">Space Stations</string>
+    <string name="tab_flights">Flights</string>
+    <string name="tab_rovers">Rovers</string>
+
+    <!-- 中间：出发地 / 目的地 -->
+    <string name="station_dca">DCA</string>
+    <string name="station_mars">MARS</string>
+
+    <!-- 行程信息 -->
+    <string name="trip_one_way">One Way</string>
+    <string name="trip_travellers">1 Traveller</string>
+
+    <!-- 底部出发按钮 -->
+    <string name="action_depart">DEPART</string>
+
+    <!-- 图片内容描述（无障碍） -->
+    <string name="desc_double_arrows">往返箭头</string>
+    <string name="desc_galaxy">星系</string>
+    <string name="desc_rocket">火箭</string>
+    <string name="desc_rover">火星车</string>
+    <string name="desc_space_station">空间站</string>
+</resources>
